@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { addTodo } from '../store/taskSlice.js';
 
@@ -6,63 +6,57 @@ function AddTodo() {
     const dispatch = useDispatch();
     const [date, setDate] = useState("");
     const [text, setText] = useState("");
-    const [priority,setPriority] = useState("Low");
-    const [completed,setCompleted] = useState(false);
-    const [error ,setError] = useState(false)
+    const [priority, setPriority] = useState("Low");
+    const [completed, setCompleted] = useState(false);
+    const [error, setError] = useState(false);
 
-    //Adding todo after filling all the entry 
     const addTodoHandler = (e) => {
         e.preventDefault();
-        //if there is no text and user want to create todo we restrict user to do that and show them an error
-        if(text.length > 0 && date.length > 0){
-            setError(false)
-            //storing data through reducer addTodo in store of React-Redux
-            dispatch(addTodo({ text,date,priority,completed}));
-        }else{
+        if (text.length > 0 && date.length > 0) {
+            setError(false);
+            dispatch(addTodo({ text, date, priority, completed }));
+            setText("");
+            setDate("");
+            setPriority("Low");
+        } else {
             setError(true);
         }
-        setText("")
-        setDate("")
     };
 
     return (
-        <div>
-        {/* Todo Form */}
-        <form onSubmit={addTodoHandler} className='w-full h-fit bg-[#365486] flex justify-center gap-x-2 px-1 md:gap-x-16 xl:gap-x-20 py-1 mx-auto rounded-lg  '>
-           {/* Text (todo ) input  */}
-            <input
-                type="text"
-                className='text-[#0F1035] bg-[#DCF2F1] rounded-lg text-center border-transparent p-0 lg:h-10 h-8 md:w-36 w-28 lg:w-fit text-md lg:text-lg'
-                value={text}
-                onChange={(e) => setText(e.target.value)}
-                placeholder='Enter Task'
+        <div className="mb-6">
+            <form onSubmit={addTodoHandler} className='w-full bg-[#D9D9D9] flex flex-col sm:flex-row justify-center gap-4 p-4 rounded-lg shadow-md'>
+                <input
+                    type="text"
+                    className='flex-grow text-[#0F1035] bg-[#EEEEEE] rounded-lg text-center border-2 border-[#00F82E] p-2 text-md lg:text-lg focus:outline-none focus:ring-2 focus:ring-[#00F82E]'
+                    value={text}
+                    onChange={(e) => setText(e.target.value)}
+                    placeholder='Enter Task'
                 />
-            {/* Date Input  */}
-            <input
-                type="date"
-                className='text-[#0F1035] bg-[#DCF2F1] cursor-pointer border-transparent text-center rounded-lg lg:h-10 h-8 placeholder:text-[#0F1035] text-md lg:text-lg'
-                value={date}
-                onChange={(e) => setDate(e.target.value)}
+                <input
+                    type="date"
+                    className='text-[#0F1035] bg-[#EEEEEE] cursor-pointer border-2 border-[#00F82E] text-center rounded-lg p-2 text-md lg:text-lg focus:outline-none focus:ring-2 focus:ring-[#00F82E]'
+                    value={date}
+                    onChange={(e) => setDate(e.target.value)}
                 />
-                {/* Priority  */}
-                <select name="priority" 
-                        id=""
-                        value={priority}
-                        onChange={(e)=>setPriority(e.target.value)}
+                <select 
+                    value={priority}
+                    onChange={(e) => setPriority(e.target.value)}
+                    className='text-[#0F1035] bg-[#EEEEEE] border-2 border-[#00F82E] rounded-lg p-2 text-md lg:text-lg focus:outline-none focus:ring-2 focus:ring-[#00F82E]'
                 >
-                 <option value="Low">Low</option>
-                 <option value="Medium">Medium</option>
-                 <option value="High">High</option>
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
                 </select>
-            <button
-                type='submit'
-                className=' text-[#0F1035] bg-[#DCF2F1] -pl-10 md:-pl-6 rounded-lg lg:p-2  lg:h-10 h-8  text-sm lg:text-lg '
-                >Create Task</button>
-
-        </form>
-        {/* if there is a error when user not input task and date then we show them error message */}
-        {error && <p className='text-red-600 text-center font-semibold'>Please Enter Task and Due Date Properly </p> }
-    </div>
+                <button
+                    type='submit'
+                    className='bg-[#00F82E] text-[#0F1035] rounded-lg p-2 text-md lg:text-lg hover:bg-[#00F82E]/80 transition-colors duration-200'
+                >
+                    Create Task
+                </button>
+            </form>
+            {error && <p className='text-red-600 text-center font-semibold mt-2'>Please Enter Task and Due Date Properly</p>}
+        </div>
     );
 }
 

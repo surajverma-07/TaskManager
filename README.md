@@ -100,14 +100,14 @@ While building this application, the following assumptions were made:
 
 Here are some screenshots of the app in action:
 
-### Screenshot 1: Task Management (Planned Stage)
-![Planned Stage](./screenshots/planned-stage.png)
+### Screenshot 1: Task Management (Adding a task)
+![Planned Stage](src/assets/add.png)
 
-### Screenshot 2: Sorting and Filtering Tasks
-![Sorting Tasks](./screenshots/sorting-tasks.png)
+### Screenshot 2: Completed and Filtering Tasks
+![Sorting Tasks](src/assets/sort.png)
 
-### Screenshot 3: Completed Tasks
-![Completed Stage](./screenshots/completed-stage.png)
+### Screenshot 3: Search a task
+![Completed Stage](src/assets/search.png)
 
 (You can replace the screenshot paths with your actual images, or add additional screenshots as necessary.)
 

@@ -4,9 +4,9 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 const  initialState = {
     todos: JSON.parse(localStorage.getItem('todos')) || [{
         id:1,
-        text:"add todo",
-        date:"01-1-2001",
-        priority:"low",
+        text:"",
+        date:"",
+        priority:"",
         editable:false,
         completed:false,
     }]

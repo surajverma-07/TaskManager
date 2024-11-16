@@ -6,7 +6,7 @@ function AddTodo() {
     const dispatch = useDispatch();
     const [date, setDate] = useState("");
     const [text, setText] = useState("");
-    const [priority,setPriority] = useState("low");
+    const [priority,setPriority] = useState("Low");
     const [completed,setCompleted] = useState(false);
     const [error ,setError] = useState(false)
 
@@ -50,7 +50,7 @@ function AddTodo() {
                         value={priority}
                         onChange={(e)=>setPriority(e.target.value)}
                 >
-                 <option value="low">Low</option>
+                 <option value="Low">Low</option>
                  <option value="Medium">Medium</option>
                  <option value="High">High</option>
                 </select>

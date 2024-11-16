@@ -1,35 +1,62 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import React from "react";
+import AddTodo from "./components/AddTodo";
+import { useSelector} from "react-redux";
+import Todos from "./components/Todos.jsx";
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
-
+  const todos = useSelector((state) => state.todos);
+  console.log("todos :: ",todos);
+  
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <div className="min-h-screen bg-[#DCF2F1] xl:py-8 py-4 ">
+      <div className="font-bold text-2xl text-center xl:text-3xl text-[#0F1035] shadow-lg xl:h-16">Manage Your Todos</div>
+      <div className="w-full md:max-w-[80vw] mx-auto xl:mt-6 mt-1 lg:mt-2  shadow-lg rounded-lg xl:px-44 py-3 px-2 max-w-[100vw]">
+      
+      {/* current todo starts  */}
+        <div className="text-xl heading md:text-2xl lg:text-3xl text-center mb-4 lg:mb-8 mt-2 ">
+          Planned Stage
+        </div>
+        <div className="mb-4">
+          {/* AddTodo form goes here and passing props from where it's called*/}
+          <AddTodo/>
+        </div>
+        
+           <div className="flex flex-wrap gap-y-3">
+            {/* Looping todos from the array of todos getting each element key is required while loopin html  */}
+              {todos.map((todo) => (
+                <div key={todo.id} className={`w-full`}>
+                  {
+                    !todo.completed ? (<Todos todo={todo} />):(null)
+                  }
+                   
+                </div>
+               ))}
+          </div>
+       {/* current todo ends  */}
+
+
+       {/* completed todo starts  */}
+       <div className="text-xl heading md:text-2xl lg:text-3xl text-center mb-8 mt-2 ">
+          Completed Stage
+        </div>          
+           <div className="flex flex-wrap gap-y-3">
+            {/* Looping todos from the array of todos getting each element key is required while loopin html  */}
+           {todos.map((todo) => (
+                <div key={todo.id} className={`${todo.completed?("w-full"):("h-0")}`}>
+                  {/* if todo is completed then show here  */}
+                  {
+                    todo.completed ? (<Todos todo={todo} />):(null)
+                  }
+                   
+                </div>
+               ))}
+          </div>
+       {/* pending todo ends */}
+
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    </div>
+  );
 }
 
-export default App
+export default App;

@@ -4,7 +4,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 const  initialState = {
     todos: JSON.parse(localStorage.getItem('todos')) || [{
         id:1,
-        text:"",
+        text:"add todo",
         date:"01-1-2001",
         priority:"low",
         editable:false,
@@ -12,7 +12,7 @@ const  initialState = {
     }]
 }
 
-export const todoSlice = createSlice({
+export const taskSlice = createSlice({
     name:'todo',
     initialState,
     reducers:{
@@ -60,6 +60,6 @@ export const todoSlice = createSlice({
 })
 
 // exporting all the reducers 
-export const {addTodo,removeTodo,updateTodo,toggleCompleted} = todoSlice.actions
+export const {addTodo,removeTodo,updateTodo,toggleCompleted} = taskSlice.actions
 
-export default todoSlice.reducer 
+export default taskSlice.reducer 

@@ -38,6 +38,7 @@ function AddTodo() {
                     className='text-[#0F1035] bg-[#EEEEEE] cursor-pointer border-2 border-[#00F82E] text-center rounded-lg p-2 text-md lg:text-lg focus:outline-none focus:ring-2 focus:ring-[#00F82E]'
                     value={date}
                     onChange={(e) => setDate(e.target.value)}
+                    placeholder='Set Deadline'
                 />
                 <select 
                     value={priority}

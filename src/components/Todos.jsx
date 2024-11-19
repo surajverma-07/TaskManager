@@ -43,7 +43,7 @@ function Todos({ todo }) {
     return (
         <div
             className={`flex flex-col sm:flex-row items-center justify-between border border-gray-200 rounded-lg font-medium p-4 gap-y-2 sm:gap-x-4 shadow-md text-sm md:text-base transition-all duration-300 ${
-                completed ? "bg-gray-100 text-gray-500" : "bg-white text-gray-800"
+                completed ? "bg-gray-300 text-gray-400" : "bg-white text-gray-800"
             }`}
         >
             <div className="flex items-center w-full sm:w-1/2">

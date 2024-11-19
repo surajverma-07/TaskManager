@@ -72,7 +72,7 @@ function App() {
           <div>
             <h2 className="text-2xl font-semibold mb-4 text-[#00F82E]">Completed Stage</h2>
             <div className="space-y-4">
-              {sortedTodos.map((todo) => (
+              {sortedFilteredTodos.map((todo) => (
                 todo.completed && <Todos key={todo.id} todo={todo} />
               ))}
             </div>
